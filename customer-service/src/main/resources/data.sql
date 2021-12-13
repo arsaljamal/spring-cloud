@@ -1,0 +1,1 @@
+INSERT INTO CUSTOMER (CUST_NAME, CUST_EMAIL) VALUES('Arsal','arsal@arsal.com');
