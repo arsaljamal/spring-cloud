@@ -19,12 +19,12 @@ public class VehicleWebServices {
     }
 
     @GetMapping
-    public List<Vehicle> getAllCustomer() {
+    public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Vehicle getCustomer(@PathVariable("id") long id) {
+    public Vehicle getVehicle(@PathVariable("id") long id) {
         return vehicleRepository.getById(id);
     }
 }
