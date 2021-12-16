@@ -24,7 +24,7 @@ public class ReservationWebServices {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping
+    @GetMapping(path = "/customers")
     public List<Customer> getAllCustomers() {
         ResponseEntity<List<Customer>> customerResponse = this.restTemplate.exchange
                 ("http://CUSTOMERSERVICES/customers", HttpMethod.GET, null,
@@ -33,8 +33,17 @@ public class ReservationWebServices {
         return customerResponse.getBody();
     }
 
-    @GetMapping("/{id}")
-    public Reservation getCustomer(@PathVariable("id") long id) {
-        return reservationRepository.getById(id);
+    @GetMapping(path = "/vehicles")
+    public List<Vehicle> getAllVehicles() {
+        ResponseEntity<List<Vehicle>> vehicleResponse = this.restTemplate.exchange
+                ("http://VEHICLESERVICES/vehicles", HttpMethod.GET, null,
+                        new ParameterizedTypeReference<>() {
+                        });
+        return vehicleResponse.getBody();
+    }
+
+    @GetMapping
+    public List<Reservation> getAllReservation() {
+        return reservationRepository.findAll();
     }
 }
