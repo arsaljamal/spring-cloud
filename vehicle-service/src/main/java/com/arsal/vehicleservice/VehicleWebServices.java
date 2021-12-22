@@ -1,6 +1,8 @@
 package com.arsal.vehicleservice;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,8 @@ import java.util.List;
 @RequestMapping("/vehicles")
 public class VehicleWebServices {
 
+    Logger logger = LoggerFactory.getLogger(VehicleWebServices.class);
+
     private final VehicleRepository vehicleRepository;
 
     public VehicleWebServices(VehicleRepository vehicleRepository) {
@@ -20,6 +24,7 @@ public class VehicleWebServices {
 
     @GetMapping
     public List<Vehicle> getAllVehicles() {
+        logger.info("All Vehicle Call Invoked!");
         return vehicleRepository.findAll();
     }
 

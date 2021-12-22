@@ -1,5 +1,7 @@
 package com.arsal.customerservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerWebServices {
 
+    Logger logger = LoggerFactory.getLogger(CustomerWebServices.class);
+
     private final CustomerRepository customerRepository;
 
     public CustomerWebServices(CustomerRepository customerRepository) {
@@ -19,6 +23,7 @@ public class CustomerWebServices {
 
     @GetMapping
     public List<Customer> getAllCustomer() {
+        logger.info("All Customers Call Invoked!");
         return customerRepository.findAll();
     }
 
